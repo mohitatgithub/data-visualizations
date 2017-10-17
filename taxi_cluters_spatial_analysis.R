@@ -1,9 +1,8 @@
 #Visualization of Taxi Availability Clusters on a busy Monday morning 
-set.seed(2017-10-05)
 library(dplyr)
 library(leaflet)
 
-taxi_data <- read.csv('taxi_coordinates_2017-10-02T18:00:00_monday.csv')
+taxi_data <- read.csv('taxi_coordinates_2017-10-02T08:30:00_monday.csv')
 
 taxi_data %>%
   leaflet() %>%

@@ -1,4 +1,6 @@
 #Visualization of Taxi Availability Clusters on a busy Monday morning 
+#Visualisation can be seen at http://rpubs.com/mohitatrpubs/345304
+
 library(dplyr)
 library(leaflet)
 

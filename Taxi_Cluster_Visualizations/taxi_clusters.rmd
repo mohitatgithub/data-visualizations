@@ -1,0 +1,36 @@
+---
+title: "Taxi Availability Clusters"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+###Importing librarires & fetching data
+```{r,warning=FALSE,message=FALSE}
+library(dplyr)
+library(leaflet)
+taxi_data <- read.csv('taxi_coordinates_2017-10-02T08:30:00_monday.csv')
+```
+
+###Finding Taxi Density Clusters across Singapore
+```{r,warning=FALSE,message=FALSE}
+taxi_data %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+```
+
+
+###Marking location of all taxis at given time
+```{r}
+taxi_data %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(radius = 2,color = "blue")
+```
+

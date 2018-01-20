@@ -1,0 +1,61 @@
+---
+title: "Crime Data Interactive Maps"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(leaflet)
+crime<-read.csv("train.csv")
+```
+
+Interactive Maps on subsets of crime data
+
+```{r cars}
+crime_kidnapping<-subset(crime,crime$Category=="KIDNAPPING")
+```
+
+Kidnappings crime clusters across San Francisco 
+
+```{r pressure, echo=FALSE}
+crime_kidnapping %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng=crime_kidnapping$X,lat=crime_kidnapping$Y,clusterOptions = markerClusterOptions(maxClusterRadius=40))
+```
+
+Kidnappings crime clusters across San Francisco 
+
+```{r}
+crime_kidnapping %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(lng=crime_kidnapping$X,lat=crime_kidnapping$Y,radius = 20,color = "red")
+```
+
+Kidnapping incidents on Weekends(Blue) & Weekdays(Red)
+
+```{r}
+crime_kidnapping %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(lng=crime_kidnapping$X,lat=crime_kidnapping$Y,radius = 60,
+             color = ~ifelse(DayOfWeek=="Sunday" | DayOfWeek=="Saturdy", "blue", "red"),
+             stroke = FALSE, fillOpacity = 1)
+```
+
+```{r}
+crime_kidnapping_southern<-subset(crime,crime$Category=="KIDNAPPING" & crime$PdDistrict=="SOUTHERN")
+```
+
+Kidnapping across Southern Region which is most active crime zone
+```{r}
+crime_kidnapping_southern %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircles(lng=crime_kidnapping_southern$X,lat=crime_kidnapping_southern$Y,radius = 20,color = "red")
+```
+

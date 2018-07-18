@@ -1,6 +1,6 @@
 Sharing some of my data visualizations created using R(ggplot, leaflet), Tableau & Python.
 
-I also share interactive visualizations on my tableau public & RPubs portals:
+I also publish interactive visualizations on my tableau public & RPubs portals:
 
 Tableau Public: https://public.tableau.com/profile/mohit5191#!/
 
